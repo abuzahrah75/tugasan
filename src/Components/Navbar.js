@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import MyMenu from './MyMenu';
+import {MyAppsContext} from './Store'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,16 +22,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
+  const [myApps] = useContext(MyAppsContext);
+
+  
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+          <MyMenu />
           <Typography variant="h6" className={classes.title}>
-            News
+            {myApps.tajuk} for {myApps.owner}
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
