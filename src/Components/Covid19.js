@@ -17,8 +17,8 @@ export default class Covid19 extends React.Component {
 
   render() {
     return (
-      <ul>
-        { this.state.countries.map(country => <li>{country.country}</li>)}
+      <ul >
+        { this.state.countries.map(country => <li key ={country.country}>{country.country}</li>)}
       </ul>
     )
   }

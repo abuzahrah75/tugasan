@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MyMenu from './MyMenu';
-import {MyAppsContext} from './Store'
+// import {MyAppsContext} from './Store'
+import Testapi from './testapi'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  const [myApps] = useContext(MyAppsContext);
+  // const [myApps] = useContext(MyAppsContext);
 
   
 
@@ -32,7 +33,7 @@ export default function Navbar() {
         <Toolbar>
           <MyMenu />
           <Typography variant="h6" className={classes.title}>
-            {myApps.tajuk} for {myApps.owner}
+            <Testapi />
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
