@@ -21,7 +21,7 @@ const apptoken = ls.get('apptoken')
         }
       }, [setMyApps,setMytoken,mytoken])
 
-    
+    // console.log("TOKEN:  " + mytoken)
 
      return (
          <MyAppsContext.Provider value ={[myApps, setMyApps]}>
