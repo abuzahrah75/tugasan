@@ -19,7 +19,7 @@ const apptoken = ls.get('apptoken')
         if(mytoken === '' && apptoken !==''){
             setMytoken(apptoken)
         }
-      }, [setMyApps,mytoken])
+      }, [setMyApps,setMytoken,mytoken])
 
     
 
