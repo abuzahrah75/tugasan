@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export const FruitContext = React.createContext('Apple')
+export const MytokenContext = React.createContext('Apple')
 export const VegetableContext = React.createContext('Tomato')
 export const MyAppsContext = React.createContext({})
 
@@ -10,17 +10,17 @@ export const MyAppsContext = React.createContext({})
 //   }
 
  const Store = ({children})=>{
-     const [fruit, setFruit]= useState('Apple')
+     const [mytoken, setMytoken]= useState('')
      const [vegetable, setVegetable]=useState('Tomato')
      const [myApps, setMyApps] = useState({})
 
      return (
          <MyAppsContext.Provider value ={[myApps, setMyApps]}>
-        <FruitContext.Provider value={[fruit, setFruit]}>
+        <MytokenContext.Provider value={[mytoken, setMytoken]}>
             <VegetableContext.Provider value={[vegetable, setVegetable]}>
                 {children}
             </VegetableContext.Provider>
-        </FruitContext.Provider>
+        </MytokenContext.Provider>
         </MyAppsContext.Provider>
      )
 

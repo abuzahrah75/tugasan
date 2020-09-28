@@ -2,11 +2,12 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-// import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import {useHistory} from 'react-router-dom'
 
-export default function MyMenu() {
+export default function MyMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  let history = useHistory()
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -16,14 +17,17 @@ export default function MyMenu() {
     setAnchorEl(null);
   };
 
+  const menuClicked = (linkData)=>{
+    history.push(linkData)
+    handleClose()
+  }
+
   return (
     <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" onClick={handleClick}>
       <MenuIcon />
       </Button>
-      {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
+     
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -31,9 +35,12 @@ export default function MyMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={()=> menuClicked('/')}>Home</MenuItem>
+        <MenuItem onClick={()=> menuClicked('/covid19')}>Covid-19</MenuItem>
+       
+        <MenuItem onClick={()=> menuClicked('/tobuy')}>To Buy</MenuItem>
+        <MenuItem onClick={()=> menuClicked('/todo')}>To Do</MenuItem>
+        <MenuItem onClick={()=> menuClicked('/todev')}>To Dev.</MenuItem>
       </Menu>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Testcomponent from './testcomponent';
 import axios from 'axios';
 
 export default class Covid19 extends React.Component {
@@ -17,9 +17,12 @@ export default class Covid19 extends React.Component {
 
   render() {
     return (
+      <>
+      <Testcomponent />
       <ul >
         { this.state.countries.map(country => <li key ={country.country}>{country.country}</li>)}
       </ul>
+      </>
     )
   }
 }

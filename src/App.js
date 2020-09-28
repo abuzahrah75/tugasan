@@ -5,8 +5,17 @@ import './App.css';
 import Covid19 from './Components/Covid19'
 import Navbar from './Components/Navbar'
 import Store from './Components/Store'
-import Testcomponent from './Components/testcomponent';
-// import Testapi from './Components/testapi';
+
+import Login from './Components/login'
+import Logout from './Components/logout'
+
+import {Route, Switch} from 'react-router-dom'
+import {ProtectedRoute} from './Components/protectedRoute'
+
+import Utama from './Components/utama'
+import Tobuy from './Components/tugas/tobuy';
+import Todo from './Components/tugas/todo';
+import Todev from './Components/tugas/todev';
 
 
 function App() {
@@ -16,10 +25,24 @@ function App() {
     <div className="App">
       <Store>
         <Navbar />
-        {/* <Testapi /> */}
-        {/* <PersonList /> */}
-        <Testcomponent />
-        <Covid19 />
+
+        <React.StrictMode>
+          <Switch>
+            <Route path="/" exact component={Utama} />
+
+            <ProtectedRoute path="/covid19" component={Covid19}/>
+            <ProtectedRoute path="/tobuy" component={Tobuy}/>
+            <ProtectedRoute path="/todo" component={Todo}/>
+            <ProtectedRoute path="/todev" component={Todev}/>
+          
+
+
+            <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
+            
+            <Route path="*" component={ ()=> "404 NOT FOUND"}/>
+          </Switch>
+        </React.StrictMode>
         
       </Store>
     </div>

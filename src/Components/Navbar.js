@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+
 import MyMenu from './MyMenu';
 // import {MyAppsContext} from './Store'
 import Testapi from './testapi'
+import Loginorlogout from "./loginorlogout";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,10 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  // const [myApps] = useContext(MyAppsContext);
-
   
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -35,7 +33,7 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
             <Testapi />
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Loginorlogout />
         </Toolbar>
       </AppBar>
     </div>
