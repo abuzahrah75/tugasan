@@ -1,16 +1,24 @@
-import React, {useContext} from 'react';
-import {MytokenContext} from './Store'
+import React, {useEffect, useContext} from 'react';
 import {Redirect} from 'react-router-dom'
+// import {Processlogout} from './processlogout';
+import {MytokenContext} from './Store'
+const context = useContext(MytokenContext)
+const [, setMytoken] = context
 
 const Logout = () => {
-    const context = useContext(MytokenContext)
-    const [, setMytoken] = context
-    
-    setMytoken('')
-        
     
     let state = {redirect: '/'}
-    return <Redirect to={state.redirect} />
+    useEffect(()=>{
+        setMytoken('')
+    },[setMytoken])
+   
+    return (
+    <>
+        {/* <Processlogout /> */}
+        <Redirect to={state.redirect} />
+    </>
+    )
+    
     
 }
 

@@ -7,7 +7,7 @@ import Navbar from './Components/Navbar'
 import Store from './Components/Store'
 
 import Login from './Components/login'
-import Logout from './Components/logout'
+// import Logout from './Components/logout'
 
 import {Route, Switch} from 'react-router-dom'
 import {ProtectedRoute} from './Components/protectedRoute'
@@ -38,7 +38,7 @@ function App() {
 
 
             <Route path="/login" component={Login} />
-            <Route path="/logout" component={Logout} />
+            {/* <Route path="/logout" component={Logout} /> */}
             
             <Route path="*" component={ ()=> "404 NOT FOUND"}/>
           </Switch>
