@@ -1,18 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from './axios'
+import ls from 'local-storage'
 
-export const MytokenContext = React.createContext('Apple')
+export const MytokenContext = React.createContext('')
 export const VegetableContext = React.createContext('Tomato')
 export const MyAppsContext = React.createContext({})
 
-// const myappData={
-//     tajuk: "TUGASAN",
-//     owner: "Abu Zahrah"
-//   }
+const apptoken = ls.get('apptoken')
 
  const Store = ({children})=>{
      const [mytoken, setMytoken]= useState('')
      const [vegetable, setVegetable]=useState('Tomato')
      const [myApps, setMyApps] = useState({})
+
+     useEffect(() => {
+        axios.get('tugasan/api/appdata').then(res => setMyApps(res.data))
+
+        if(mytoken === '' && apptoken !==''){
+            setMytoken(apptoken)
+        }
+      }, [setMyApps,mytoken])
+
+    
 
      return (
          <MyAppsContext.Provider value ={[myApps, setMyApps]}>

@@ -1,11 +1,11 @@
-import React, {useEffect, useContext} from 'react'
-import axios from './axios'
+import React, {useContext} from 'react'
+// import axios from './axios'
 import {MyAppsContext} from './Store'
 
 export default function Testapi() {
     // const [data, setData] = useState({});
     const context = useContext(MyAppsContext);
-    const [myApps, setMyApps] = context;
+    const [myApps] = context;
  
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -18,10 +18,7 @@ export default function Testapi() {
     //     fetchData();
     //   }, []);
 
-      useEffect(() => {
-        axios.get('tugasan/api/appdata').then(res => setMyApps(res.data))
-      }, [setMyApps])
-
+      
   // console.log(myApps)
     return (
         <>
