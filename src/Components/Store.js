@@ -3,32 +3,42 @@ import axios from './axios'
 import ls from 'local-storage'
 
 export const MytokenContext = React.createContext('')
-export const VegetableContext = React.createContext('Tomato')
+export const UdahLoginContext = React.createContext('')
 export const MyAppsContext = React.createContext({})
 
 const apptoken = ls.get('apptoken')
+const dahLogin = ls.get('dahlogin')
 
  const Store = ({children})=>{
      const [mytoken, setMytoken]= useState('')
-     const [vegetable, setVegetable]=useState('Tomato')
-     const [myApps, setMyApps] = useState({})
+     const [udahLogin, setUdahLogin]=useState(null)
+     const [myApps, setMyApps] = useState({appname: 'tugasan'})
 
-     useEffect(() => {
+    useEffect(() => {
         axios.get('tugasan/api/appdata').then(res => setMyApps(res.data))
+      }, [setMyApps])
 
+    // useEffect(() => {
+        
         if(mytoken === '' && apptoken !==''){
+            setUdahLogin(true)
             setMytoken(apptoken)
         }
-      }, [setMyApps,setMytoken,mytoken])
-
-    // console.log("TOKEN:  " + mytoken)
+    
+    // // },[mytoken,udahLogin])
+    // console.log("TOKENstore:  " + mytoken)
+    // console.log("uDohLogin_store:  " + udahLogin)
+    // console.log("################")
+    // console.log("apptoken  " + apptoken)
+    // console.log("dalogin " + dahLogin)
+    // console.log("888888888888888888888888888")
 
      return (
          <MyAppsContext.Provider value ={[myApps, setMyApps]}>
         <MytokenContext.Provider value={[mytoken, setMytoken]}>
-            <VegetableContext.Provider value={[vegetable, setVegetable]}>
+            <UdahLoginContext.Provider value={[udahLogin, setUdahLogin]}>
                 {children}
-            </VegetableContext.Provider>
+            </UdahLoginContext.Provider>
         </MytokenContext.Provider>
         </MyAppsContext.Provider>
      )

@@ -1,25 +1,33 @@
 import React, {useEffect, useContext} from 'react';
 import {Redirect} from 'react-router-dom'
 // import {Processlogout} from './processlogout';
-import {MytokenContext} from './Store'
-const context = useContext(MytokenContext)
-const [, setMytoken] = context
+import {MytokenContext,UdahLoginContext} from './Store'
+import ls from 'local-storage'
+import {useHistory} from 'react-router-dom'
 
-const Logout = () => {
-    
+export const Logout = () => {
+    const [,setMytoken] = useContext(MytokenContext)
+    const [,setUdahLogin] = useContext(UdahLoginContext)
+    let history = useHistory()
+
+
     let state = {redirect: '/'}
-    useEffect(()=>{
+    // useEffect(()=>{
         setMytoken('')
-    },[setMytoken])
+        setUdahLogin(false)
+        ls.set('dahlogin',false)
+        ls.set('apptoken','')
+        
+    // },[setMytoken,setUdahLogin])
    
-    return (
-    <>
-        {/* <Processlogout /> */}
-        <Redirect to={state.redirect} />
-    </>
-    )
-    
+    // return (
+    // <>
+    //     {/* <Processlogout /> */}
+    //     <Redirect to={state.redirect} />
+    // </>
+    // )
+    history.push("/")
     
 }
 
-export default Logout;
+// export default Logout;
