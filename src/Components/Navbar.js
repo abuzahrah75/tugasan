@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import MyMenu from './MyMenu';
 // import {MyAppsContext} from './Store'
-import Testapi from './testapi'
+// import Testapi from './testapi'
 import Loginorlogout from "./loginorlogout";
 
 
@@ -30,7 +30,8 @@ export default function Navbar() {
         <Toolbar>
           <MyMenu />
           <Typography variant="h6" className={classes.title}>
-            <Testapi />
+            {/* <Testapi /> */}
+            My Tugasan App
           </Typography>
           <Loginorlogout />
         </Toolbar>

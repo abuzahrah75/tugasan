@@ -9,6 +9,7 @@ export default class Covid19 extends React.Component {
 
   componentDidMount() {
     axios.get(`https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true`)
+    // axios.get(`https://api.apify.com/v2/datasets/7Fdb90FMDLZir2ROo/items?format=json&clean=1`)
       .then(res => {
         const countries = res.data;
         this.setState({ countries });

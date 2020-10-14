@@ -7,7 +7,7 @@ export const UdahLoginContext = React.createContext('')
 export const MyAppsContext = React.createContext({})
 
 const apptoken = ls.get('apptoken')
-const dahLogin = ls.get('dahlogin')
+// const dahLogin = ls.get('dahlogin')
 
  const Store = ({children})=>{
      const [mytoken, setMytoken]= useState('')
@@ -16,14 +16,16 @@ const dahLogin = ls.get('dahlogin')
 
     useEffect(() => {
         axios.get('tugasan/api/appdata').then(res => setMyApps(res.data))
-      }, [setMyApps])
-
-    // useEffect(() => {
-        
         if(mytoken === '' && apptoken !==''){
             setUdahLogin(true)
             setMytoken(apptoken)
         }
+
+      }, [setMyApps, mytoken])
+
+    // useEffect(() => {
+        
+       
     
     // // },[mytoken,udahLogin])
     // console.log("TOKENstore:  " + mytoken)

@@ -9,12 +9,22 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
+    "date-fns": "^2.16.1",
     "formik": "^2.1.5",
     "local-storage": "^2.0.0",
+    "material-table": "^1.69.1",
+    "moment": "^2.29.0",
+    "moment-timezone": "^0.5.31",
+    "ra-data-drf": "^2.0.0",
+    "ra-data-simple-rest": "^3.9.1",
     "react": "^16.13.1",
+    "react-admin": "^3.9.2",
     "react-dom": "^16.13.1",
+    "react-moment": "^1.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-table": "^7.6.0",
+    "save": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

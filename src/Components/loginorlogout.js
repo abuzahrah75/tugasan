@@ -1,43 +1,32 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {MytokenContext, UdahLoginContext} from './Store'
 import Button from '@material-ui/core/Button';
-// import {Redirect, useHistory} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import ls from 'local-storage'
-
-// import {Logout} from './logout'
 
 const Loginorlogout = () => {
     const [,setMytoken] = useContext(MytokenContext);
     const [udahLogin,setUdahLogin] = useContext(UdahLoginContext)
-
-    // const [dahLoginKe, setDahLoginKe] = useState(false)
-    
-    // setDahLoginKe(udahLogin)
+    const [haiDahLoginKe, setHaiDahLoginKe] = useState(false)
 
     let history = useHistory()
     
-    // const dahloginke=ls.get('dahlogin')
-    
-   
-   
+    useEffect( () => {
+        setHaiDahLoginKe(udahLogin)
+    },[setHaiDahLoginKe,udahLogin])
 
     const tempLogout = () =>{
        
         setMytoken('')
         setUdahLogin(false)
-        // setDahLoginKe(false)
         ls.set('dahlogin', false)
         ls.set('apptoken','')
         history.push("/")
         
     }
-
-    
-    // console.log("TOKEN:  " + mytoken)
-    // console.log("DohLogin:  " + dahLogin)
-
-        if (udahLogin){
+// console.log(haiDahLoginKe)
+// console.log("################")
+        if (haiDahLoginKe){
             
             
             return (<Button color="inherit" onClick ={tempLogout}>Logout</Button>)
@@ -45,6 +34,13 @@ const Loginorlogout = () => {
             return (<Button color="inherit" onClick ={()=>history.push("/login")}>Login</Button>)
             
         }
+        // return (
+        //     { haiDahLoginKe ? (
+        //     <Button color="inherit" onClick ={tempLogout}>Logout</Button>
+        //     ) : (
+        //     <Button color="inherit" onClick ={()=>history.push("/login")}>Login</Button>
+        //     )}
+        // )
    
     
 }

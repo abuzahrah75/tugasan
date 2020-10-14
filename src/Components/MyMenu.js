@@ -37,10 +37,12 @@ export default function MyMenu(props) {
       >
         <MenuItem onClick={()=> menuClicked('/')}>Home</MenuItem>
         <MenuItem onClick={()=> menuClicked('/covid19')}>Covid-19</MenuItem>
-       
+        <MenuItem onClick={()=> menuClicked('/covid19MY')}>Covid-19@Malaysia</MenuItem>
+
         <MenuItem onClick={()=> menuClicked('/tobuy')}>To Buy</MenuItem>
         <MenuItem onClick={()=> menuClicked('/todo')}>To Do</MenuItem>
         <MenuItem onClick={()=> menuClicked('/todev')}>To Dev.</MenuItem>
+        {/* <MenuItem onClick={()=> menuClicked('/toAdmin')}>To Admin</MenuItem> */}
       </Menu>
     </div>
   );

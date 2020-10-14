@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom'
 import ls from 'local-storage'
 import axios from './axios'
+import SignIn from './SignIn'
 
 const Login = () => {
     // const [mytoken,setMytoken] = useContext(MytokenContext)
@@ -45,9 +46,9 @@ const Login = () => {
    
     return (
         <div>
-            <h1>this login page !</h1>
+            <SignIn />
             <p>we will try to use formik ? and material-ui ?</p>
-            <Button color="inherit" onClick ={tempLogin}>Login</Button>
+            <Button variant="contained" color="primary" onClick ={tempLogin}>Login</Button>
         </div>
     );
 }
