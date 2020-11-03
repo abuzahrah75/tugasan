@@ -12,7 +12,10 @@ if (window.location.hostname==="192.168.43.98"){
 }
 
 const instance = axios.create({
-    baseURL : mybase
+    baseURL : mybase,
+    // headers: {
+    //     "Content-type": "application/json"
+    //   }
 });
 
 export default instance;

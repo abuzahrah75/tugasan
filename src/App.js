@@ -16,6 +16,7 @@ import Utama from './Components/utama'
 import Tobuy from './Components/tugas/tobuy';
 import Todo from './Components/tugas/todo';
 import Todev from './Components/tugas/todev';
+import Dokumen from './Components/dokumen/Dokumen';
 // import ToAdmin from './Components/tugas/toAdmin';
 import CovidMalaysia from './Components/apitest/covidMalaysia';
 
@@ -37,6 +38,7 @@ function App() {
             <ProtectedRoute path="/tobuy" component={Tobuy}/>
             <ProtectedRoute path="/todo" component={Todo}/>
             <ProtectedRoute path="/todev" component={Todev}/>
+            <ProtectedRoute path="/dokumen" component={Dokumen}/>
             {/* <ProtectedRoute path="/toAdmin" component={ToAdmin}/> */}
           
 

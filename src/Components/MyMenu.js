@@ -42,6 +42,7 @@ export default function MyMenu(props) {
         <MenuItem onClick={()=> menuClicked('/tobuy')}>To Buy</MenuItem>
         <MenuItem onClick={()=> menuClicked('/todo')}>To Do</MenuItem>
         <MenuItem onClick={()=> menuClicked('/todev')}>To Dev.</MenuItem>
+        <MenuItem onClick={()=> menuClicked('/dokumen')}>Digital Docs.</MenuItem>
         {/* <MenuItem onClick={()=> menuClicked('/toAdmin')}>To Admin</MenuItem> */}
       </Menu>
     </div>

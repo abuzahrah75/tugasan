@@ -3,6 +3,7 @@ import MaterialTable from 'material-table'
 import axios from '../axios'
 // import MytokenContext from '../Store'
 import ls from 'local-storage'
+import Typography from "@material-ui/core/Typography";
 
 
 const ToBuyList = () => {
@@ -32,7 +33,9 @@ const ToBuyList = () => {
         <>
         
         <MaterialTable 
-        title = "List of Item(s) to Buy"
+        title = {<Typography variant="h6" color="primary">
+                  To Buy Item(s)
+                </Typography>}
         data = {myToBuy}
         columns = {columns}
         options={{
