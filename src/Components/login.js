@@ -23,10 +23,12 @@ const Login = () => {
                 }
                 axios.post('api-token-auth/',formdata)
                 .then(res => {
+                    let AuthStr = 'Token ' + res.data.token
                     setMytoken(res.data.token)
                     setUdahLogin(true)
                     ls.set('dahlogin',true)
                     ls.set('apptoken',res.data.token)
+                    ls.set('authToken', AuthStr)
                     history.push("/todo")
                 })
                 .catch((error) => {

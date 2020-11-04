@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 let mybase="http://albadr.abuzahrah.com";
 
 if (window.location.hostname==="localhost"){
@@ -12,10 +11,8 @@ if (window.location.hostname==="192.168.43.98"){
 }
 
 const instance = axios.create({
-    baseURL : mybase,
-    // headers: {
-    //     "Content-type": "application/json"
-    //   }
-});
+            baseURL : mybase,
+        });
+
 
 export default instance;

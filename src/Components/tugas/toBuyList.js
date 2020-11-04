@@ -18,6 +18,7 @@ const ToBuyList = () => {
     let AuthStr = 'Token ' + ls.get('apptoken')
     useEffect(() =>{
         //get To Buy data
+        // axios.get(`api/tugasan/tobuy/list`)
         axios.get(`api/tugasan/tobuy/list`, { 'headers': { 'Authorization': AuthStr } })
       .then(res1 => setMyToBuy(res1.data))
       
