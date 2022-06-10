@@ -1,0 +1,7 @@
+<div class="notification is-warning" id="mynotify" 
+    hx-get="{% url 'return-empty' %}" hx-trigger="every 5s" hx-target="#mynotify" hx-swap="outerHTML"
+    >
+<button class="delete" onclick="document.getElementById('mynotify').remove();"></button>
+  <p>Task {{tugas}} has been deleted !!!</p>
+  
+</div>

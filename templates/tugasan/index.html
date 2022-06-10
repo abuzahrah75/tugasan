@@ -3,16 +3,19 @@
 
 
 {% block content %}
-<div class="shadow-lg rounded-2xl bg-white dark:bg-gray-700 w-full">
-    <p class="font-bold text-md p-4 text-black dark:text-white">
+
+<div class="container">
+    <div class="box mt-3">
+    <p class="title is-4 has-text-info">
         TUGASAN 2022 
-        <span class="text-sm text-gray-500 dark:text-gray-300 dark:text-white ml-2">
+        <span class="subtitle is-6">
         (Dashboard)
         </span>
     </p>
-<div class="container py-3 px-3">
+    
+{% comment %} <div class="container"> {% endcomment %}
     <form method="POST"
-        class="flex mb-6 space-x-4"
+        class=""
         hx-post="/tugasan/add_tugas/"
         hx-target="#tugasan"
         hx-swap="beforebegin"
@@ -20,48 +23,58 @@
         id="add_form"
     >
 
-        <input type="text" name="nama" class="title flex-1 px-4 py-1 bg-gray-100" />
-        <button class="p-3 rounded-xl text-white bg-red-500">ADD</button>
+        <div class="field">
+        <div class="control">
+            <input class="input is-primary" type="text" name="nama" placeholder="Add New Task ...">
+        </div>
+        </div>
+        <button class="button is-primary is-small"><strong>ADD</strong></button>
     </form>
-
-
-<table class="border-collapse w-small w-2/3 mx-auto">
+</div>
+<div class="box table-container">
+    <div id="modal-body"></div>
+    <div id="tugas-notify"></div>
+<table class="table is-fullwidth is-narrow">
   <thead>
     <tr>
-      <th class="p-1 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-        #
-      </th>
-      <th class="p-1 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-        Title
-      </th>
-      <th class="p-1 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-        Status
-      </th>
+      <th>#</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Action</th>
     </tr>
   </thead>
   
   <tbody id="tugasan">
     {% for todo in tugas %}
-  <tr
-    class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-    <td class="w-full lg:w-auto p-1 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-      {{todo.id}}
-    </td>
+  <tr id="baris-{{todo.id}}">
+    <td>{{todo.id}}</td>
 
 
-    <td class="w-full lg:w-auto p-1 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-      {{todo.nama}}
-    </td>
+    <td>{{todo.nama}}</td>
 
+    <td><span>{{todo.get_st_tugas_display}}</span></td>
 
-    <td class="w-full lg:w-auto p-1 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-        <span class="rounded bg-green-200 py-1 px-1 text-xs font-bold">{{todo.get_st_tugas_display}}</span>
+    <td><a 
+        hx-post="{% url 'tugasan-pop-detail' todo.id %}"
+        hx-target="#modal-body"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        ><i class="fa-solid fa-id-card has-text-warning px-2"></i></a>
+        <a
+        hx-post="{% url 'tugasan-pop-edit' todo.id %}"
+        hx-target="#modal-body"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        ><i class="fa-solid fa-edit has-text-info-dark px-2"></i></a>
+        <a 
+        hx-post="{% url 'tugasan-pop-delete' todo.id %}"
+        hx-target="#modal-body"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        ><i class="fa-solid fa-trash has-text-danger px-2"></i></a>
     </td>
   </tr>
     {% endfor %}
   </tbody>
 </table>
-
+</div>
 
 
 
@@ -75,6 +88,8 @@
 <script>
     document.body.addEventListener('htmx:afterRequest', (event) =>{
         document.querySelector('input[name=nama]').value = '';
+        document.getElementById('detail-modal').setAttribute('class', 'modal');
     });
+
 </script>
 {% endblock extrascript %}

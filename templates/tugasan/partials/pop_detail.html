@@ -1,0 +1,24 @@
+
+<div class="modal is-active" id="detail-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Detail View : {{tugas.nama}}</p>
+      <button class="delete" aria-label="close" onclick="myFunction()"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      <p>Ini detail bagi tugasan {{tugas.nama}} ... </p>
+    </section>
+    <footer class="modal-card-foot">
+      {% comment %} <button class="button is-success">Save changes</button> {% endcomment %}
+      <button class="button" onclick="myFunction()">Close</button>
+    </footer>
+  </div>
+</div>
+<script>
+    function myFunction()
+    {
+        document.getElementById('detail-modal').setAttribute('class', 'modal')
+    }
+</script>

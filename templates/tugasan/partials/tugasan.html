@@ -1,19 +1,24 @@
   
-  <tr
-    class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-    <td class="w-full lg:w-auto p-1 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-      {{tugas.id}}
+  <tr id="baris-{{tugas.id}}">
+    <td>{{tugas.id}}</td>
+    <td>{{tugas.nama}}</td>
+    <td><span>Aktif</span></td>
+
+    <td><a 
+        hx-post="{% url 'tugasan-pop-detail' tugas.id %}"
+        hx-target="#modal-body"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        ><i class="fa-solid fa-id-card has-text-warning px-2"></i></a>
+        <a
+        hx-post="{% url 'tugasan-pop-edit' tugas.id %}"
+        hx-target="#modal-body"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        ><i class="fa-solid fa-edit has-text-info-dark px-2"></i></a>
+        <a 
+        hx-post="{% url 'tugasan-pop-delete' tugas.id %}"
+        hx-target="#modal-body"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        ><i class="fa-solid fa-trash has-text-danger px-2"></i></a>
     </td>
 
-
-    <td class="w-full lg:w-auto p-1 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-      {{tugas.nama}}
-    </td>
-
-
-    <td class="w-full lg:w-auto p-1 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-     
-        <span class="rounded bg-green-200 py-1 px-1 text-xs font-bold">Aktif</span>
-     
-    </td>
   </tr>

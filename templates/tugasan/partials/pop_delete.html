@@ -1,0 +1,44 @@
+<div class="modal is-active" id="detail-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">To Delete : {{tugas.nama}}</p>
+      <button class="delete" aria-label="close" onclick="myFunction()"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      <p>ARE YOU SURE TO DELETE {{tugas.nama}} ??? </p>
+      {% comment %} <form id="for-delete" method="POST"
+        hx-post="{% url 'tugasan-delete-confirm' tugas.id %}"
+        hx-target="#tugas-notify"
+      >
+      {% csrf_token %}
+        <input type="hidden" name="id" value="{{tugas.id}}" />
+      </form> {% endcomment %}
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger"
+       {% comment %} hx-get="{% url 'tugasan-delete-confirm' tugas.id %}"
+       hx-target="#tugas-notify"
+       hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' {% endcomment %}
+
+      onclick="myDeleteFunc()">Delete</button>
+      <button class="button" onclick="myFunction()">Close</button>
+    </footer>
+  </div>
+</div>
+<script>
+    function myFunction()
+    {
+        document.getElementById('detail-modal').setAttribute('class', 'modal');
+    }
+
+    function myDeleteFunc()
+    {
+       
+        document.getElementById('baris-{{tugas.id}}').remove();
+        htmx.ajax('GET', '{% url "tugasan-delete-confirm" tugas.id %}', '#tugas-notify');
+        document.getElementById('detail-modal').setAttribute('class', 'modal');
+    }
+        
+</script>
