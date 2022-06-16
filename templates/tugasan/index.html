@@ -3,84 +3,129 @@
 
 
 {% block content %}
+<div class="pagetitle">
+    <h1>TUGASAN</h1>
+    <nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Tugasan</a></li>
+        <li class="breadcrumb-item active">Index (Dashboard)</li>   
+    </ol>
+    </nav>
+</div><!-- End Page Title -->
 
-<div class="container">
-    <div class="box mt-3">
-    <p class="title is-4 has-text-info">
-        TUGASAN 2022 
-        <span class="subtitle is-6">
-        (Dashboard)
-        </span>
-    </p>
-    
-{% comment %} <div class="container"> {% endcomment %}
-    <form method="POST"
-        class=""
-        hx-post="/tugasan/add_tugas/"
-        hx-target="#tugasan"
-        hx-swap="beforebegin"
-        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-        id="add_form"
-    >
+<section class="section">
+<div class="row">
+    <div class="col">
+        <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Tugasan Penting :</h5>
 
-        <div class="field">
-        <div class="control">
-            <input class="input is-primary" type="text" name="nama" placeholder="Add New Task ...">
-        </div>
-        </div>
-        <button class="button is-primary is-small"><strong>ADD</strong></button>
-    </form>
-</div>
-<div class="box table-container">
-    <div id="modal-body"></div>
-    <div id="tugas-notify"></div>
-<table class="table is-fullwidth is-narrow">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  
-  <tbody id="tugasan">
-    {% for todo in tugas %}
-  <tr id="baris-{{todo.id}}">
-    <td>{{todo.id}}</td>
+<!-- start tugasan content -->
+        <form method="POST"
+                    class=""
+                    hx-post="/tugasan/add_tugas/"
+                    hx-target="#tugasan"
+                    hx-swap="beforebegin"
+                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                    id="add_form"
+                >
+
+                    <div class="field">
+                    <div class="control">
+                        <input class="form-control" type="text" name="nama" placeholder="Add New Task ...">
+                    </div>
+                    </div>
+                    <button class="btn btn-primary btn-small"><strong>ADD</strong></button>
+        </form>
 
 
-    <td>{{todo.nama}}</td>
-
-    <td><span>{{todo.get_st_tugas_display}}</span></td>
-
-    <td><a 
-        hx-post="{% url 'tugasan-pop-detail' todo.id %}"
-        hx-target="#modal-body"
-        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-        ><i class="fa-solid fa-id-card has-text-warning px-2"></i></a>
-        <a
-        hx-post="{% url 'tugasan-pop-edit' todo.id %}"
-        hx-target="#modal-body"
-        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-        ><i class="fa-solid fa-edit has-text-info-dark px-2"></i></a>
-        <a 
-        hx-post="{% url 'tugasan-pop-delete' todo.id %}"
-        hx-target="#modal-body"
-        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-        ><i class="fa-solid fa-trash has-text-danger px-2"></i></a>
-    </td>
-  </tr>
-    {% endfor %}
-  </tbody>
-</table>
-</div>
+        <div id="modals-here"></div>
+        <div id="tugas-notify"></div>
 
 
+        <table class="table table-hover my-0 table-sm">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+            
+            <tbody id="tugasan">
+                {% for todo in tugas %}
+            <tr id="baris-{{todo.id}}">
+                <td>{{todo.id}}</td>
 
+
+                <td>{{todo.nama}}</td>
+
+                <td><span>{{todo.get_st_tugas_display}}</span></td>
+
+                <td>
+                    <a class="badge bg-dark"
+                    hx-post="{% url 'tugasan-pop-detail' todo.id %}"
+                    hx-target="#modals-here"
+                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+
+                    data-bs-toggle="modal" data-bs-target="exampleModal"
+                    ><i class="align-middle bx bx-detail">View</i></a>
+
+                    <a class="badge bg-dark"
+                    hx-post="{% url 'tugasan-pop-edit' todo.id %}"
+                    hx-target="#modals-here"
+                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+
+                    data-bs-toggle="modal" data-bs-target="exampleModal"
+                    ><i class="align-middle bx bx-edit">Edit</i></a>
+
+                    <a class="badge bg-danger"
+                    hx-post="{% url 'tugasan-pop-delete' todo.id %}"
+                    hx-target="#modals-here"
+                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                    
+                    data-bs-toggle="modal" data-bs-target="exampleModal"
+                    ><i class="align-middle bx bx-x">Delete</i></a>
+
+                    
+                </td>
+            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+        </div> <!--card body -->
+		</div> <!--card -->
+	</div> <!-- col -->
+	</div> <!-- row -->
+
+<div class="row">
+    <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Example Card</h5>
+              <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
+            </div>
+          </div>
 
     </div>
-</div>
+
+    <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Example Card</h5>
+              <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
+            </div>
+          </div>
+
+    </div>
+</div> <!-- row -->
+</section>
+
+
 
 {% endblock content %}
 
@@ -88,8 +133,21 @@
 <script>
     document.body.addEventListener('htmx:afterRequest', (event) =>{
         document.querySelector('input[name=nama]').value = '';
-        document.getElementById('detail-modal').setAttribute('class', 'modal');
     });
+
+    function closeModal() {
+	var container = document.getElementById("modals-here")
+	var backdrop = document.getElementById("modal-backdrop")
+	var modal = document.getElementById("modal")
+
+	modal.classList.remove("show")
+	backdrop.classList.remove("show")
+
+	setTimeout(function() {
+		container.removeChild(backdrop)
+		container.removeChild(modal)
+	}, 200)
+}
 
 </script>
 {% endblock extrascript %}

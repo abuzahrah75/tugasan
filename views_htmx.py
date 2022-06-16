@@ -9,6 +9,7 @@ def return_kosong(request):
 def pop_detail(request, pk):
     tugasan = Tugasan.objects.get(id=pk)
     return render(request, 'tugasan/partials/pop_detail.html', {'tugas': tugasan})
+    # return render(request, 'tugasan/for_debug.html')
 
 
 def pop_edit(request, pk):

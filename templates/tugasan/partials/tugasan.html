@@ -4,21 +4,30 @@
     <td>{{tugas.nama}}</td>
     <td><span>Aktif</span></td>
 
-    <td><a 
-        hx-post="{% url 'tugasan-pop-detail' tugas.id %}"
-        hx-target="#modal-body"
-        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-        ><i class="fa-solid fa-id-card has-text-warning px-2"></i></a>
-        <a
-        hx-post="{% url 'tugasan-pop-edit' tugas.id %}"
-        hx-target="#modal-body"
-        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-        ><i class="fa-solid fa-edit has-text-info-dark px-2"></i></a>
-        <a 
-        hx-post="{% url 'tugasan-pop-delete' tugas.id %}"
-        hx-target="#modal-body"
-        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-        ><i class="fa-solid fa-trash has-text-danger px-2"></i></a>
+    <td>
+        <a class="badge bg-primary"
+                    hx-post="{% url 'tugasan-pop-detail' tugas.id %}"
+                    hx-target="#modal-body"
+                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+
+                    data-bs-toggle="modal" data-bs-target="exampleModal"
+                    ><i class="align-middle" data-feather="file-text"></i></a>
+
+        <a class="badge bg-warning"
+                    hx-post="{% url 'tugasan-pop-edit' tugas.id %}"
+                    hx-target="#modal-body"
+                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+
+                    data-bs-toggle="modal" data-bs-target="exampleModal"
+                    ><i class="align-middle" data-feather="edit"></i></a>
+                    
+        <a class="badge bg-danger"
+                    hx-post="{% url 'tugasan-pop-delete' tugas.id %}"
+                    hx-target="#modal-body"
+                    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+
+                    data-bs-toggle="modal" data-bs-target="exampleModal"
+                    ><i class="align-middle" data-feather="delete"></i></a>
     </td>
 
   </tr>
